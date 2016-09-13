@@ -1,9 +1,12 @@
 {% extends "base.html" %}
 
 {% block content %}
-<<<<<<< HEAD
 
-=======
-    Forecast Page
->>>>>>> 867f1b51d26f636e62d9cfad95d2e5b617d1fbc5
+    <h2>Weather Forecast</h2>
+    <hr>
+    
+    City: {{weather_form.city.data}}
+    <br>
+    Country Code: {{weather_form.country_code.data}}
+
 {% endblock %}
