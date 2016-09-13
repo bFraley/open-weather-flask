@@ -1,8 +1,4 @@
-
-from flask import render_template
-
 from flask import render_template, request
-
 
 from app import app
 from app.forms import WeatherForm
@@ -13,11 +9,6 @@ def index():
 
 @app.route("/current", methods=["GET", "POST"])
 def current_weather():
-
-	weather_form = WeatherForm(request.form)
-    
-	return render_template("current.html",
-		weather_form=weather_form)
     weather_form = WeatherForm(request.form)
     if request.method == "POST" and weather_form.validate():
         pass
@@ -27,6 +18,7 @@ def current_weather():
 
 @app.route("/forecast", methods=["GET", "POST"])
 def forecast_weather():
+    weather_form = WeatherForm(request.form)
 
-	return render_template("forecast.html", 
-		weather_form=weather_form)
+    return render_template("forecast.html",
+        weather_form=weather_form)
