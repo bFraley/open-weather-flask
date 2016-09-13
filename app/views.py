@@ -23,9 +23,3 @@ def forecast_weather():
 
 	return render_template("forecast.html", 
 		weather_form=weather_form)
-
-    weather_form = WeatherForm(request.form)
-
-    return render_template("forecast.html",
-        weather_form=weather_form)
-
