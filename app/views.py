@@ -13,10 +13,17 @@ def index():
 
 @app.route("/current", methods=["GET", "POST"])
 def current_weather():
+
 	weather_form = WeatherForm(request.form)
     
 	return render_template("current.html",
 		weather_form=weather_form)
+    weather_form = WeatherForm(request.form)
+    if request.method == "POST" and weather_form.validate():
+        pass
+
+    return render_template("current.html",
+        weather_form=weather_form)
 
 @app.route("/forecast", methods=["GET", "POST"])
 def forecast_weather():
