@@ -1,4 +1,4 @@
-# Flask Package
+# Open-Weather-App
 
 Create a flask app as a package and a run script to actually run the application
 
