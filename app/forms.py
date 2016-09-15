@@ -1,13 +1,6 @@
 from wtforms import Form, StringField, validators, ValidationError
 
 class WeatherForm(Form):
-    city = StringField("City")
-
-    country_code = StringField("Country Code")
-    
-
-    country_code = StringField("Country Code")
-
     city = StringField("City", validators=[validators.DataRequired()])
     country_code = StringField("Country Code")
 

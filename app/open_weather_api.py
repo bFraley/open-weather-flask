@@ -1,12 +1,12 @@
 import requests
 
 class OpenWeatherAPI():
-	def __init__(self, api_key, units="imperial"):
-		self.base_url = "http://api.openweathermap.org/data/2.5"
-		self.base_payload = {
+    def __init__(self, api_key, units="imperial"):
+        self.base_url = "http://api.openweathermap.org/data/2.5"
+        self.base_payload = {
             "appid": api_key,
-            "units": units
-		}
+            "units": units,
+        }
 
     def get_payload(self, **kwargs):
         payload = {}
@@ -20,30 +20,28 @@ class OpenWeatherAPI():
         return payload
 
 
-	def get_current_weather(self, city, country_code=""):
+    def get_current_weather(self, city, country_code=""):
         q = ""
 
         if country_code:
-        	q = "{} {}".format(city, country_code)
+            q = "{},{}".format(city, country_code)
         else:
-        	q = city
+            q = city
 
         payload = self.get_payload(q=q)
-        url = "{}{}".format()self.base_url, "/weather")
+        url = "{}{}".format(self.base_url, "/weather")
         r = requests.get(url, params=payload)
-
         result = r.json()
         return DailyWeather(
-            description = result['weather'][0]['description'],
-            icon = result['weather'][0]['icon'],
-            dt = result['dt'],
-            temp = result['main']['temp']
-            # temp_night = result[]
-            wind = result['wind']['speed'],
-            pressure = result['main']['pressure'],
-            humidity = result['main']['humidity'],
-            sunrise = result['sys']['sunrise'],
-            sunset = result['sys']['sunset']
+                description = result['weather'][0]['description'],
+                icon = result['weather'][0]['icon'],
+                temp = result['main']['temp'],
+                dt = result['dt'],
+                wind = result['wind']['speed'],
+                pressure = result['main']['pressure'],
+                humidity = result['main']['humidity'],
+                sunrise = result['sys']['sunrise'],
+                sunset = result['sys']['sunset']
             )
 
 class DailyWeather():
@@ -70,18 +68,5 @@ class DailyWeather():
         self.sunrise = sunrise
         self.sunset = sunset
 
-        def __str__(self):
+    def __str__(self):
         return "Description: {}, Temp: {}".format(self.description, self.temp)
-
-
-
-
-
-
-
-
-
-
-
-
-
