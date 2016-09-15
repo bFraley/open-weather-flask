@@ -1,5 +1,8 @@
 {% extends "base.html" %}
 
 {% block content %}
-
+    <h2>Weather Forecast</h2>
+    <hr>
+    {% include "includes/weather-form.html" %}
+    {{ weather_list }}
 {% endblock %}
